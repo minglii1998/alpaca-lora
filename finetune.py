@@ -114,9 +114,10 @@ def train(
         load_in_8bit=True,
         torch_dtype=torch.float16,
         device_map=device_map,
+        cache_dir="../cache/"
     )
 
-    tokenizer = LlamaTokenizer.from_pretrained(base_model)
+    tokenizer = LlamaTokenizer.from_pretrained(base_model,cache_dir="../cache/")
 
     tokenizer.pad_token_id = (
         0  # unk. we want this to be different from the eos token
@@ -247,7 +248,7 @@ def train(
             eval_steps=200 if val_set_size > 0 else None,
             save_steps=200,
             output_dir=output_dir,
-            save_total_limit=3,
+            save_total_limit=20,
             load_best_model_at_end=True if val_set_size > 0 else False,
             ddp_find_unused_parameters=False if ddp else None,
             group_by_length=group_by_length,

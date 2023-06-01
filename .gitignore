@@ -2,7 +2,6 @@ out/
 7B/
 13B/
 __pycache__/
-checkpoint**
 minimal-llama**
 upload.py
 lora-**
@@ -13,3 +12,9 @@ test_data.json
 todo.txt
 .venv
 .vscode
+
+logs
+scripts
+data*
+trained_models
+workspace
